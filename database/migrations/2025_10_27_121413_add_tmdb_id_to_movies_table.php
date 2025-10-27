@@ -13,9 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        // CHUYỂN CODE VÀO ĐÂY
-        Schema::table('movies', function (Blueprint $table) {
-            // Thêm cột 'tmdb_id'
+        Schema::table('movies', function (Blueprint $table) { 
             $table->integer('tmdb_id')->nullable()->unique()->after('id');
         });
     }
@@ -27,9 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        // HÀM 'DOWN' NÊN XÓA CỘT ĐÓ ĐI
         Schema::table('movies', function (Blueprint $table) {
-            $table->dropColumn('tmdb_id'); // Xóa cột 'tmdb_id'
+            //
         });
     }
 };
