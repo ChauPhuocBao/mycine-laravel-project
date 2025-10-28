@@ -9,15 +9,11 @@
         {{-- Hiển thị tên thể loại --}}
         <h1 class="text-center mb-4" style="color: var(--primary-color);">{{ $category->name }} Movies</h1>
         <hr style="color: #4e4e4e;">
-
-        {{-- Hiển thị danh sách phim (dùng lại hàm render card) --}}
         <div class="row mt-4">
             @forelse($movies as $movie)
-                {{-- Gọi lại hàm render card từ home.blade.php hoặc tạo partial --}}
-                {{-- Tạm thời copy lại cấu trúc card overlay ở đây --}}
-                <div class="col-lg-3 col-md-4 mb-4"> {{-- Dùng col-lg-3 để hiển thị 4 phim/hàng --}}
+                <div class="col-lg-3 col-md-4 mb-4">
                     <a href="{{ $movie->imdb_url ?? '#' }}" target="_blank" class="text-decoration-none">
-                        <div class="movie-card-overlay" style="height: auto; aspect-ratio: 2 / 3;"> {{-- Dùng aspect-ratio thay height cố định --}}
+                        <div class="movie-card-overlay" style="height: auto; aspect-ratio: 2 / 3;">
                             <img src="{{ $movie->poster_url ?: 'https://via.placeholder.com/500x750?text=No+Poster' }}" class="movie-card-image" alt="{{ e($movie->title ?? 'Untitled') }}">
                             <div class="movie-card-content">
                                 <h5 class="movie-card-title">{{ e($movie->title ?? 'Untitled') }}</h5>
@@ -37,8 +33,6 @@
                 </div>
             @endforelse
         </div>
-
-        {{-- Hiển thị nút phân trang --}}
         <div class="d-flex justify-content-center mt-4">
             {{ $movies->links('pagination::bootstrap-5') }}
         </div>
