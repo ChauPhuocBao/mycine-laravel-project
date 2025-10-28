@@ -150,7 +150,38 @@ class PopulateMoviesFromTMDb extends Command
                         }
                     }
                     // --- END GENRE SYNCING ---
+                    
+                    // --- START FETCH TRAILER ---
+                    $this->line("   -> Fetching videos for {$movie->title}...");
+                    $videosResponse = Http::get("https://api.themoviedb.org/3/movie/{$movie->tmdb_id}/videos?api_key={$apiKey}");
 
+                    if ($videosResponse->successful()) {
+                        $videos = $videosResponse->json()['results'] ?? [];
+                        $trailerKey = null;
+
+                        // Find the official YouTube trailer
+                        foreach ($videos as $video) {
+                            if (isset($video['site'], $video['type'], $video['key']) &&
+                                strtolower($video['site']) === 'youtube' &&
+                                strtolower($video['type']) === 'trailer') 
+                            {
+                                $trailerKey = $video['key'];
+                                if (isset($video['official']) && $video['official'] === true) {
+                                    break; // Found the official one
+                                }
+                            }
+                        }
+
+                        if ($trailerKey) {
+                            $movie->update(['trailer_url' => $trailerKey]); // Update the movie record
+                            $this->line("   -> Trailer found and updated: {$trailerKey}");
+                        } else {
+                            $this->line("   -> No YouTube trailer found."); // Use line instead of warn
+                        }
+                    } else {
+                        $this->warn("   -> Failed to fetch videos for {$movie->title}.");
+                    }
+                    // --- END FETCH TRAILER ---
                     $moviesAddedOrUpdated++;
                     $this->line(" -> Processed: {$movie->title}");
 

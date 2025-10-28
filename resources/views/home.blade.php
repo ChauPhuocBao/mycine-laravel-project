@@ -41,10 +41,9 @@
                                                 </ul>
                                             </div>
                                             <div class="gen-meta-btn mt-4">
-                                                <a href="{{ $movie->imdb_url ?? '#' }}" target="_blank">
-                                                    <button type="button"><i class="fa-solid fa-circle-info"></i>
-                                                        &nbsp;View Details</button>
-                                                </a>
+                                                <a href="{{ route('movie.detail', ['slug' => $movie->slug]) }}">
+                                                    <button type="button"><i class="fa-solid fa-circle-info"></i>&nbsp;View Details</button>
+                                                </a>                                                    
                                             </div>
                                         </div>
                                     </div>

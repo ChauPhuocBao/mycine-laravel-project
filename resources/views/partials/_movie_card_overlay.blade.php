@@ -1,6 +1,7 @@
 {{-- This partial view expects a $movie variable --}}
 <div class="col-lg-4 col-md-6 mb-4">
-    <a href="{{ $movie->imdb_url ?? '#' }}" target="_blank" class="text-decoration-none">
+    <!-- <a href="{{ $movie->imdb_url ?? '#' }}" target="_blank" class="text-decoration-none"> -->
+    <a href="{{ route('movie.detail', ['slug' => $movie->slug]) }}" class="text-decoration-none">
         <div class="movie-card-overlay">
             <img src="{{ $movie->poster_url ?: 'https://via.placeholder.com/500x750?text=No+Poster' }}" class="movie-card-image" alt="{{ e($movie->title ?? 'Untitled') }}">
             <div class="movie-card-content">

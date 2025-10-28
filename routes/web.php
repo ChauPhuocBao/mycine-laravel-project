@@ -17,6 +17,7 @@ use App\Http\Controllers\PageController;
 
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/category/{slug}', [PageController::class, 'showCategory'])->name('category.show');
+Route::get('/movies/{slug}', [PageController::class, 'showMovieDetails'])->name('movie.detail');
 
 
 

@@ -51,13 +51,50 @@ class PageController extends Controller
         ]);
     }
 
-    public function showCategory(string $slug)
+    public function showCategory(string $slug, Request $request)
     {
         $category = Category::where('slug', $slug)->firstOrFail();
-        $movies = $category->movies()->orderBy('release_year', 'desc')->paginate(12);
+
+        // Sorting
+        $sort = $request->query('sort', 'release_year_desc');   //Default: Release year desc
+        $sortColumn = 'release_year';
+        $sortDirection = 'desc';
+
+        if ($sort === 'rating_desc') {
+            $sortColumn = 'imdb_rating';
+            $sortDirection = 'desc';
+        } elseif ($sort === 'rating_asc') {
+            $sortColumn = 'imdb_rating';
+            $sortDirection = 'asc';
+        } elseif ($sort === 'title_asc') {
+            $sortColumn = 'title';
+            $sortDirection = 'asc';
+        } elseif ($sort === 'title_desc') {
+            $sortColumn = 'title';
+            $sortDirection = 'desc';
+        } elseif ($sort === 'release_year_asc') {
+            $sortColumn = 'release_year';
+            $sortDirection = 'asc';
+        }
+        $movies = $category->movies()
+                            ->orderBy($sortColumn, $sortDirection)
+                            ->paginate(12)
+                            ->withQueryString();
+
         return view('category-movies', [
             'category' => $category,
             'movies' => $movies,
+            'currentSort' => $sort,
+        ]);
+    }
+
+    public function showMovieDetails(string $slug)
+    {
+        $movie = Movie::where('slug', $slug)->firstOrFail();
+
+        return view('movie_details',
+        [
+            'movie' => $movie,
         ]);
     }
 }
