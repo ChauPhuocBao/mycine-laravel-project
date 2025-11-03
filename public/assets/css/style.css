@@ -317,6 +317,11 @@ section.action-movies a, section.horror-movies a, section.adventure-movies a, se
 }
 /* --- END: NEW OVERLAY CARD STYLES --- */
 
+
+.text-muted {
+    color: #f8f9fa !important;
+}
+
 /* Scroll Top */
 a.scroll-top {
   text-decoration: none;

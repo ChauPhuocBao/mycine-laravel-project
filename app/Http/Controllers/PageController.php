@@ -97,4 +97,22 @@ class PageController extends Controller
             'movie' => $movie,
         ]);
     }
+    public function search(Request $request)
+    {
+        // Get the search query from the request input
+        $searchQuery = $request->input('query');
+
+        // Search in the database where title or description contains the search query
+        $movies = Movie::where('title', 'LIKE', "%{$searchQuery}%")
+                       ->orWhere('description', 'LIKE', "%{$searchQuery}%")
+                       ->orderBy('release_year', 'desc') // Optional: sort results
+                       ->paginate(12) // Paginate the results
+                       ->withQueryString(); // Append the query string to pagination links
+
+        // Return a view with the search results and the original query
+        return view('search-results', [
+            'movies' => $movies,
+            'searchQuery' => $searchQuery,
+        ]);
+    }
 }

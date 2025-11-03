@@ -66,10 +66,16 @@
                         </li>  
 
                         <li class="nav-item me-2">
-                            <a class="nav-link" href="#">
+                            <form class="d-flex" action="{{ route('movie.search') }}" method="GET" role="search">
+                                <input class="form-control me-2" type="search" name="query" placeholder="Search for a movie..." aria-label="Search" value="{{ request('query') }}" required>
+                                    <button class="btn btn-outline-primary" type="submit">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                    </button>
+                            </form>
+                            <!-- <a class="nav-link" href="#">
                                 <i class="fa fa-search" data-bs-toggle="tooltip"
                                     data-bs-placement="bottom" data-bs-title="Search Movies"></i>
-                            </a>
+                            </a> -->
                         </li>
                       
                         
