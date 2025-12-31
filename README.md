@@ -1,6 +1,6 @@
 Hướng dẫn cài đặt
 
-Để chạy project này trên máy cục bộ, vui lòng thực hiện theo các bước sau:
+Để chạy project này, thực hiện theo các bước sau:
 1. Sao chép Repository
 Bash
 
@@ -47,11 +47,12 @@ php artisan storage:link
 Chạy các lệnh custom sau để làm đầy dữ liệu phim:
 Bash
 
-# Lấy 3 phim trending làm carousel
-php artisan movies:fetch-trending
 
 # Lấy danh sách phim phổ biến cho các thể loại
 php artisan movies:populate
+
+# Lấy 3 phim trending làm carousel
+php artisan movies:fetch-trending
 
 6. Chạy ứng dụng
 Bash
