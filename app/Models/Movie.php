@@ -20,7 +20,12 @@ class Movie extends Model
         'trailer_url',
     ];
     public function categories()
-        {
-            return $this->belongsToMany(Category::class);
-        }
+    {
+        return $this->belongsToMany(Category::class);
+    }
+    
+    public function movieReviews() 
+    {
+    return $this->hasMany(MovieReview::class)->latest();
+    }
 }

@@ -90,11 +90,16 @@ class PageController extends Controller
 
     public function showMovieDetails(string $slug)
     {
-        $movie = Movie::where('slug', $slug)->firstOrFail();
+        // Tìm phim VÀ tải kèm các bài review, cùng với user của mỗi review
+        $movie = Movie::where('slug', $slug)
+                    ->with('movieReviews.user') // Tải kèm movieReviews VÀ user của review
+                    ->firstOrFail();
 
-        return view('movie_details',
-        [
-            'movie' => $movie,
+        // (Xóa code $reviews, $userReview cũ nếu có)
+
+        return view('movie_details', [
+            'movie' => $movie
+            // Gửi biến $movie (đã chứa các review) sang view
         ]);
     }
     public function search(Request $request)

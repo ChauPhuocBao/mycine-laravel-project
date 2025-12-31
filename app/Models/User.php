@@ -41,4 +41,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Một user viết nhiều bài đánh giá (blog post)
+    public function movieReviews() {
+        return $this->hasMany(MovieReview::class);
+    }
+    // Một user viết nhiều bình luận (comment)
+    public function reviewComments() {
+        return $this->hasMany(ReviewComment::class);
+    }
 }
