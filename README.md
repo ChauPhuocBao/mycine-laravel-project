@@ -101,11 +101,11 @@ php artisan serve
 ```
 
 Truy cập website tại:  
-👉 http://127.0.0.1:8000
+ http://127.0.0.1:8000
 
 ---
 
-## 📌 Các lệnh Artisan quan trọng
+## Các lệnh Artisan quan trọng
 
 | Lệnh | Mô tả |
 |------|------|
@@ -116,7 +116,7 @@ Truy cập website tại:
 
 ---
 
-## 📁 Cấu trúc thư mục
+## Cấu trúc thư mục
 
 ```
 ├── app/
@@ -137,7 +137,7 @@ Truy cập website tại:
 
 ---
 
-## 🎯 Ghi chú
+## Ghi chú
 
 - Project dùng cho mục đích học tập / demo Laravel
 - Yêu cầu **PHP >= 8.1**
