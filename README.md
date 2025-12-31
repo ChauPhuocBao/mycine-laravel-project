@@ -1,62 +1,84 @@
-Hướng dẫn cài đặt
+# MyCine – Movie Management Web App
 
-Để chạy project này, thực hiện theo các bước sau:
-1. Sao chép Repository
-Bash
+MyCine là một ứng dụng web quản lý phim được xây dựng bằng **Laravel** — cho phép người dùng duyệt phim theo thể loại, xem thông tin chi tiết và tải dữ liệu phim từ API bên ngoài. Đây là project demo triển khai ứng dụng Laravel hoàn chỉnh với backend + frontend, database migrations, seeders và các lệnh artisan tùy chỉnh.
 
-git clone https://github.com/username/mycine.git
-cd mycine
+---
 
-2. Cài đặt các gói phụ thuộc
-Bash
+## 🚀 Tính năng chính
 
-# Cài đặt PHP dependencies
-composer install
+- 🔹 Quản lý phim theo thể loại (Categories)
+- 🔹 Lấy dữ liệu phim từ **TMDB API**
+- 🔹 Giao diện người dùng xem phim
+- 🔹 Migrations & seeders tự động tạo dữ liệu mẫu
+- 🔹 Sử dụng Laravel + Blade + Tailwind CSS/Vite
+- 🔹 Artisan custom commands để populate & fetch phim
 
-# Cài đặt thư viện Frontend
-npm install
-npm run build
+---
 
-3. Cấu hình Môi trường
+## 🧰 Công nghệ sử dụng
 
-Sao chép file .env.example thành .env và cấu hình các thông số cần thiết:
-Bash
+- **Laravel (PHP Framework)** – server-side MVC  
+- **Blade Templates** – View engine  
+- **Tailwind CSS + Vite** – Frontend styling & bundling  
+- **MySQL / MariaDB** – Database  
+- **TMDB API** – Lấy dữ liệu phim từ The Movie Database  
+- **Composer & NPM** – Dependency management
 
-cp .env.example .env
+---
 
-Mở file .env và cập nhật:
+## 🛠️ Cài đặt & chạy project (Local)
 
-    Database: DB_DATABASE, DB_USERNAME, DB_PASSWORD.
+1. **Clone repository**
+    ```bash
+    git clone https://github.com/ChauPhuocBao/mycine-laravel-project.git
+    cd mycine-laravel-project
+    ```
 
-    TMDb API: Thêm TMDB_TOKEN=your_access_token_here.
+2. **Install dependencies**
+    ```bash
+    composer install
+    npm install
+    npm run build
+    ```
 
-4. Khởi tạo Project
-Bash
+3. **Tạo file .env**
+    ```bash
+    cp .env.example .env
+    ```
+   - Mở `.env` và cấu hình:
+     - DB_DATABASE, DB_USERNAME, DB_PASSWORD
+     - `TMDB_TOKEN=3b9ba02d0fe01618c2d8db672d2b5b8d`
 
-# Tạo Application Key
-php artisan key:generate
+4. **Khởi tạo project**
+    ```bash
+    php artisan key:generate
+    php artisan migrate --seed
+    php artisan storage:link
+    ```
 
-# Tạo bảng và nạp dữ liệu mẫu (Categories)
-php artisan migrate --seed
+5. **Populate dữ liệu phim**
+    ```bash
+    php artisan movies:populate
+    php artisan movies:fetch-trending
+    ```
 
-# Tạo liên kết thư mục lưu trữ
-php artisan storage:link
+6. **Chạy ứng dụng**
+    ```bash
+    php artisan serve
+    ```
+   - Mở trình duyệt: `http://127.0.0.1:8000`
 
-5. Đổ dữ liệu phim từ API
+---
 
-Chạy các lệnh custom sau để làm đầy dữ liệu phim:
-Bash
+## 📌 Lệnh Artisan hữu ích
 
+| Lệnh | Mô tả |
+|------|-------|
+| `movies:populate` | Lấy dữ liệu movie theo thể loại từ TMDB |
+| `movies:fetch-trending` | Lấy danh sách trending làm carousel |
+| `storage:link` | Tạo symbolic link tới `public/storage` |
 
-# Lấy danh sách phim phổ biến cho các thể loại
-php artisan movies:populate
+---
 
-# Lấy 3 phim trending làm carousel
-php artisan movies:fetch-trending
+## 📁 Cấu trúc folder
 
-6. Chạy ứng dụng
-Bash
-
-php artisan serve
-
-Truy cập: http://127.0.0.1:8000
