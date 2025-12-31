@@ -4,7 +4,7 @@ MyCine là một ứng dụng web quản lý phim được xây dựng bằng **
 
 ---
 
-## 🚀 Tính năng chính
+## Tính năng chính
 
 - 🔹 Quản lý phim theo thể loại (Categories)
 - 🔹 Lấy dữ liệu phim từ **TMDB API**
@@ -15,7 +15,7 @@ MyCine là một ứng dụng web quản lý phim được xây dựng bằng **
 
 ---
 
-## 🧰 Công nghệ sử dụng
+## Công nghệ sử dụng
 
 - **Laravel (PHP Framework)**
 - **Blade Templates**
@@ -26,7 +26,7 @@ MyCine là một ứng dụng web quản lý phim được xây dựng bằng **
 
 ---
 
-## 🛠️ Cài đặt & chạy project (Sử dụng XAMPP)
+## Cài đặt & chạy project (Sử dụng XAMPP)
 
 ### 1. Clone repository
 ```bash
@@ -145,21 +145,3 @@ Truy cập website tại:
 - Khuyến nghị chạy bằng **XAMPP trên Windows**
 
 ---
-
-## 🤝 Đóng góp
-
-- Fork repository
-- Tạo branch mới
-- Commit và gửi Pull Request
-
----
-
-## 📄 License
-
-MIT License
-
----
-
-## 📞 Liên hệ
-
-- GitHub: https://github.com/ChauPhuocBao
