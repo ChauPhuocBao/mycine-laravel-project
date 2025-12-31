@@ -73,7 +73,7 @@ DB_PASSWORD=
 
 Thêm TMDB API key:
 ```env
-TMDB_TOKEN=your_tmdb_api_key
+TMDB_API_KEY=3b9ba02d0fe01618c2d8db672d2b5b8d
 ```
 
 ---
